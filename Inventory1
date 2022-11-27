@@ -1,72 +1,88 @@
 import java.util.*;
-public class Main {
+public class Shop
+{
+    private String item_name,type,temp;
+    private int quantity,item_no;
+    private float selling_price;
+    private float purchase_price;
 
-    public static void menu()
+    //getter and setter
+
+    public Integer getItem_no() {
+        return item_no;
+    }
+
+    public void setItem_no(Integer item_no) {
+        this.item_no = item_no;
+    }
+
+    public String getItem_name() {
+        return item_name;
+    }
+
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public float getSelling_price() {
+        return selling_price;
+    }
+
+    public void setSelling_price(int selling_price) {
+        this.selling_price = selling_price;
+    }
+
+    public float getPurchase_price() {
+        return purchase_price;
+    }
+
+    public void setPurchase_price(int purchase_price) {
+        this.purchase_price = purchase_price;
+    }
+
+
+    // functions
+
+    public void addItem(Shop s)
     {
-        System.out.println("----------Inventory Menu----------");
-        System.out.println("1.Add Product ");
-        System.out.println("2.Show Record list ");
-        System.out.println("3.Get a record");
-        System.out.println("4.Exit");
-        System.out.println("Enter your choice: ");
+        this.temp = s.temp;
+        this.item_no = s.item_no;
+        this.item_name = s.item_name;
+        this.type = s.type;
+        this.quantity = s.quantity;
+        this.selling_price = s.selling_price;
+        this.purchase_price = s.purchase_price;
     }
-    public static void main(String[] args) {
-        int input;
-        Scanner sc= new Scanner(System.in);
-        ArrayList<Shop> shoplist = new ArrayList<Shop>();
+    public void displayItem(ArrayList<Shop> arr)
+    {
+        System.out.println("\n\n");
+        if(arr.isEmpty()){
+            System.out.println("Record list is empty");
+            return;
+        }
+        System.out.println("---------------------------------------------------------------------------------------------");
+        System.out.println("Item no\tItem name\tItem quantity\tSelling price\t Purchase price\t\tItem type");
+        for(Shop shop: arr){
+            System.out.println( shop.item_no+"\t\t"+shop.item_name+"\t\t\t"+shop.quantity+"\t\t\t\t"+shop.selling_price+"\t\t\t"+shop.purchase_price+"\t\t\t"+shop.type);
 
-        do{
-            Shop s = new Shop();
-            menu();
-            input= sc.nextInt();
-            switch(input){
-                case 1:
-
-                    System.out.println("Enter item number: ");
-                    s.setItem_no(sc.nextInt());
-                    System.out.println("Enter the product name: ");
-                    s.setItem_name(sc.next());
-                    System.out.println("Enter the quantity of product: ");
-                    s.setQuantity(sc.nextInt());
-                    System.out.println("Enter product purchase price: ");
-                    s.setPurchase_price(sc.nextInt());
-                    System.out.println("Enter product selling price: ");
-                    s.setSelling_price(sc.nextInt());
-                    System.out.println("Do you want to sell or buy? (sell/buy)");
-                    s.setType(sc.next());
-                    String choice="";
-                    sc.nextLine();
-                    if(choice.equals("sell")){
-                        s.setType(sc.next());
-                    }
-                        else{
-                        if(choice.equals("buy")){
-
-                        }
-                    }
-                    s.addItem(s);
-                    shoplist.add(s);
-
-                    break;
-
-                case 2:
-                    s.displayItem(shoplist);
-
-                    break;
-
-                case 3:
-                    break;
-
-                case 4:
-
-                    break;
-
-
-                default:
-                    break;
-            }
-        }while(input!=4);
-
-
+        }
+        System.out.println("---------------------------------------------------------------------------------------------");
     }
+
 }
