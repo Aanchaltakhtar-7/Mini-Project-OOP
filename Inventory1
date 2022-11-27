@@ -1,0 +1,72 @@
+import java.util.*;
+public class Main {
+
+    public static void menu()
+    {
+        System.out.println("----------Inventory Menu----------");
+        System.out.println("1.Add Product ");
+        System.out.println("2.Show Record list ");
+        System.out.println("3.Get a record");
+        System.out.println("4.Exit");
+        System.out.println("Enter your choice: ");
+    }
+    public static void main(String[] args) {
+        int input;
+        Scanner sc= new Scanner(System.in);
+        ArrayList<Shop> shoplist = new ArrayList<Shop>();
+
+        do{
+            Shop s = new Shop();
+            menu();
+            input= sc.nextInt();
+            switch(input){
+                case 1:
+
+                    System.out.println("Enter item number: ");
+                    s.setItem_no(sc.nextInt());
+                    System.out.println("Enter the product name: ");
+                    s.setItem_name(sc.next());
+                    System.out.println("Enter the quantity of product: ");
+                    s.setQuantity(sc.nextInt());
+                    System.out.println("Enter product purchase price: ");
+                    s.setPurchase_price(sc.nextInt());
+                    System.out.println("Enter product selling price: ");
+                    s.setSelling_price(sc.nextInt());
+                    System.out.println("Do you want to sell or buy? (sell/buy)");
+                    s.setType(sc.next());
+                    String choice="";
+                    sc.nextLine();
+                    if(choice.equals("sell")){
+                        s.setType(sc.next());
+                    }
+                        else{
+                        if(choice.equals("buy")){
+
+                        }
+                    }
+                    s.addItem(s);
+                    shoplist.add(s);
+
+                    break;
+
+                case 2:
+                    s.displayItem(shoplist);
+
+                    break;
+
+                case 3:
+                    break;
+
+                case 4:
+
+                    break;
+
+
+                default:
+                    break;
+            }
+        }while(input!=4);
+
+
+    }
+}
